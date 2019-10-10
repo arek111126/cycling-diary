@@ -1,6 +1,7 @@
-package pl.cyclingDiary.Entity;
+package pl.cyclingDiary.entity;
 
 import lombok.*;
+import pl.cyclingDiary.validate.ConfirmPassword;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -14,6 +15,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "user")
+@ConfirmPassword
 public class User {
 
     @Id

@@ -37,9 +37,14 @@
 					<span class="login100-form-title p-b-43">
 						Login to continue
 					</span>
+					<div class="alert alert-danger" role="alert" th:if="${param.error}" >
+						Invalid username and password.
+					</div>
+					<div class="alert alert-danger" role="alert" th:if="${param.logout}" >
+						You have been logged out.
+					</div>
 					
-					
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz" font-size="16px" >
+					<div class="wrap-input100 validate-input" data-validate = "Valid login is required" font-size="16px" >
 						<input class="input100" type="text" name="username">
 						<span class="focus-input100"></span>
 						<span class="label-input100">Login</span>

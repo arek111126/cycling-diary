@@ -20,13 +20,33 @@
         <div class="container">
             <form  th:action="@{/register}" th:object="${user}" method="POST" class="appointment-form" id="appointment-form">
                 <h2>Register</h2>
+
                 <div class="form-group-1">
-                    <input type="text"  id="title" placeholder="Your Name" th:field="*{firstName}"/>
+
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                    </div>
+                    <input type="text"  id="title" placeholder="Your Name" th:field="*{firstName}" />
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('sureName')}" th:errors="*{sureName}">
+                    </div>
                     <input type="text"  id="name" placeholder="Your Surname"  th:field="*{sureName}"/>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">
+                    </div>
                     <input type="text"  id="login" placeholder="Your Login"  th:field="*{login}"/>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                    </div>
                     <input type="text"  id="email" placeholder="Your Eamil" th:field="*{email}"/>
-                    <input type="text"  id="password" placeholder="Your Password" th:field="*{password}"/>
-                    <input type="text"  id="retype" placeholder="Confirm Password" th:field="*{retypePassword}"/>
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                    </div>
+                    <div class="alert alert-danger" role="alert"th:if="${#fields.hasErrors('global')}" th:errors="*{global}">
+                    </div>
+
+                    <input type="password"  id="password" placeholder="Your Password" th:field="*{password}"/>
+
+                    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('retypePassword')}" th:errors="*{retypePassword}">
+                    </div>
+                    <div class="alert alert-danger" role="alert"th:if="${#fields.hasErrors('global')}" th:errors="*{global}">
+                    </div>
+                    <input type="password"  id="retype" placeholder="Confirm Password" th:field="*{retypePassword}"/>
                     
                 </div>
                

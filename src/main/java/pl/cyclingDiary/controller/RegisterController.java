@@ -1,15 +1,17 @@
-package pl.cyclingDiary.Controller;
+package pl.cyclingDiary.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.cyclingDiary.Entity.User;
-import pl.cyclingDiary.Repository.RoleRepository;
-import pl.cyclingDiary.Repository.UserRepository;
+import pl.cyclingDiary.entity.User;
+import pl.cyclingDiary.repository.RoleRepository;
+import pl.cyclingDiary.repository.UserRepository;
 import pl.cyclingDiary.model.Roles;
 
 import javax.validation.Valid;
@@ -26,6 +28,12 @@ public class RegisterController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return !(SecurityContextHolder.getContext().getAuthentication()
+                instanceof AnonymousAuthenticationToken)  ? "redirect:/" : "login" ;
+    }
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
@@ -46,6 +54,7 @@ public class RegisterController {
             userRepository.save(user);
 
             return "redirect:/";
+
         }
     }
 

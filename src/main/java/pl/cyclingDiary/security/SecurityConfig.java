@@ -61,9 +61,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .and()
                 .rememberMe()
                 .key("cyclingKey");
 

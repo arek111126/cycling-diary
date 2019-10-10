@@ -1,4 +1,4 @@
-package pl.cyclingDiary.Entity;
+package pl.cyclingDiary.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
