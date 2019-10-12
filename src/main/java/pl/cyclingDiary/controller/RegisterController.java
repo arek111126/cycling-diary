@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,9 @@ import pl.cyclingDiary.repository.RoleRepository;
 import pl.cyclingDiary.repository.UserRepository;
 import pl.cyclingDiary.model.Roles;
 
+
 import javax.validation.Valid;
+
 
 @Controller
 public class RegisterController {
@@ -42,18 +45,20 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String registerNewUser(@Valid User user, BindingResult result) {
+    public String registerNewUser( @Valid User user,BindingResult result,Model model) {
 
 
-        if (result.hasErrors()) {
+        if (result.hasErrors() ) {
             return "registerAccount";
         } else {
-            user.setEnabled(1);
-            user.getRoles().add(roleRepository.findFirstById(Roles.ROLE_USER));
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            String encodedPassword= passwordEncoder.encode(user.getPassword());
+            model.addAttribute("newUser","true");
+
+            user.setRetypePassword(encodedPassword);
+            user.setPassword(encodedPassword);
             userRepository.save(user);
 
-            return "redirect:/";
+            return "redirect:/login?newUser=true";
 
         }
     }

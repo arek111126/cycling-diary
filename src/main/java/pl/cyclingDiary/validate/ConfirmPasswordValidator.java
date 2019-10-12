@@ -15,6 +15,9 @@ public class ConfirmPasswordValidator implements ConstraintValidator<ConfirmPass
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
 
         User user = (User) o;
+
        return user.getPassword().equals(user.getRetypePassword());
+
+
     }
 }

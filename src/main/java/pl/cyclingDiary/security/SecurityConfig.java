@@ -42,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/component/**",
                 "/vendor/**",
                 "/loginPageNew/**",
-                "/registerForm/**"
+                "/registerForm/**",
+                "/dashboard/**"
         );
     }
 
@@ -55,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/").hasAnyRole("USER", "ADMIN")
+
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

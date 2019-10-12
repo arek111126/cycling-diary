@@ -49,6 +49,10 @@ public class User {
     @JoinColumn(name = "role_id")
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "user")
+    private List<Training> trainings;
+
+
     public User() {
         roles = new ArrayList<>();
     }

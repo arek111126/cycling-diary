@@ -43,6 +43,10 @@
 					<div class="alert alert-danger" role="alert" th:if="${param.logout}" >
 						You have been logged out.
 					</div>
+					<div class="alert alert-success" role="alert" th:if="${param.newUser}" >
+						Account has been created you can login
+					</div>
+
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid login is required" font-size="16px" >
 						<input class="input100" type="text" name="username">
