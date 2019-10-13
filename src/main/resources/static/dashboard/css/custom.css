@@ -1,5 +1,10 @@
-.modal-custom {
-    width: 2000px !important;
-    height: 2000px !important;
-    margin: auto;
+
+.addTreningStyle {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid #852EA1;
+    box-sizing: border-box;
 }
