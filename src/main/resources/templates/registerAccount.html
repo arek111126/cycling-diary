@@ -27,7 +27,7 @@
                     </div>
                     <input type="text"  id="title" placeholder="Your Name" th:field="*{firstName}" />
                     <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('sureName')}" th:errors="*{sureName}">
-                    </div>
+                </div>
                     <input type="text"  id="name" placeholder="Your Surname"  th:field="*{sureName}"/>
                     <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">
                     </div>
