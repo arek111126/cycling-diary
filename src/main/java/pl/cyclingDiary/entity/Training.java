@@ -1,9 +1,12 @@
 package pl.cyclingDiary.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.cyclingDiary.model.GpxPojo.TrkptType;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -11,12 +14,12 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
 @Setter
-@ToString
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@ToString
 @Table(name = "training")
 public class Training {
 
@@ -42,9 +45,17 @@ public class Training {
     @NotNull
     private MultipartFile file;
 
-    @Lob
-    private byte[] gpxXml;
 
+    private double kcal;
+
+
+    private double averageNew;
+
+
+    @Lob
+    private String gpxXml;
+
+    @JsonIgnore
     @ManyToOne
     private User user;
 
@@ -53,5 +64,6 @@ public class Training {
         LocalDate localDate = LocalDate.now();
         this.creationDate = localDate.toString();
     }
+
 
 }

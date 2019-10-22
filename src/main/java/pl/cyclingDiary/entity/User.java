@@ -1,6 +1,11 @@
 package pl.cyclingDiary.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 import pl.cyclingDiary.validate.ConfirmPassword;
 
 import javax.persistence.*;
@@ -13,9 +18,9 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@ConfirmPassword
 @Entity
 @Table(name = "user")
-@ConfirmPassword
 public class User {
 
     @Id
@@ -47,8 +52,10 @@ public class User {
 
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinColumn(name = "role_id")
+    @JsonIgnore
     private List<Role> roles;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Training> trainings;
 
@@ -56,4 +63,8 @@ public class User {
     public User() {
         roles = new ArrayList<>();
     }
+
+
+
+
 }

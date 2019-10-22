@@ -1,4 +1,9 @@
 
+
+.nearDateSpan{
+    font-weight: bold;
+    color: white;
+}
 .addTreningStyle {
     width: 100%;
     padding: 12px 20px;
@@ -9,3 +14,76 @@
     box-sizing: border-box;
 }
 
+.callendarNew {
+    width: 200px !important;
+    height: 20px !important;
+   align-content: flex-start;
+
+}
+
+#mapid {
+    height: 680px;
+    width: 1555px;
+}
+
+
+.gpx {
+    border: 2px #aaa solid;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 3px #ccc;
+    width: 1555px;
+}
+
+.gpx header {
+    padding: 0.5em;
+}
+
+.gpx h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.gpx .start {
+    font-size: 14px;
+    color: white;
+}
+
+.gpx .map {
+    border: 1px #888 solid;
+    border-left: none;
+    border-right: none;
+    width: 1555px;
+    height: 690px;
+    margin: 0;
+}
+
+.gpx footer {
+    background: #f0f0f0;
+    padding: 0.5em;
+}
+
+.gpx ul.info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: smaller;
+}
+
+.gpx ul.info li {
+    color: #666;
+    padding: 2px;
+    display: inline;
+}
+
+.gpx ul.info li span {
+    color: black;
+}
+
+.col-md-12 {
+    width: 60px;
+}
+
+body {
+    overflow: hidden;
+}
