@@ -1,13 +1,18 @@
-$(function () {
-    $('input[id="traningDate"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        minYear: 1901,
-        startDate: moment().format('YYYY-MM-DD'),
-        locale: {
-            format: 'YYYY-MM-DD'
-        }
+let $1 = $(function () {
+
+    $('.card-body').on('focus',"#traningDate", function(){
+        $('input[id="traningDate"]').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minYear: 1901,
+            startDate: moment().format('YYYY-MM-DD'),
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
     });
+
+
 
     $('input[id="traningDate1"]').daterangepicker({
         singleDatePicker: true,
@@ -157,7 +162,7 @@ $(function () {
     });
 
 
-    $('#saveNewTrening').on('click', function (e) {
+    $('.card-body').on('click','#saveNewTrening', function (e) {
         e.preventDefault();
         var trainingName = $("#trainingName").val();
         var trainingPlace = $("#trainingPlace").val();
@@ -309,7 +314,7 @@ $(function () {
         }
     });
 
-    $("#deleteButton").on('click', function () {
+    $(document).on('click','#deleteButton', function () {
         var checboxes = $(".trainingOnList .selectForDelete .deleteInput[isChecked=true]");
         var tab = [];
         if (checboxes != '') {
@@ -349,8 +354,8 @@ $(function () {
 
     });
 
-    $(".deleteInput").on('click', function () {
-
+    $(".deleteInput").on('click',function () {
+    console.log("test");
         if ($(this).attr('isChecked') == 'false') {
             $(this).attr('isChecked', 'true');
         } else {

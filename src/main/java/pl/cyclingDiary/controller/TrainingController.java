@@ -49,6 +49,13 @@ public class TrainingController {
         model.addAttribute("training", new Training());
         return "index";
     }
+    @GetMapping("/app/trainingList")
+    @ResponseBody
+    public List<Training> getTrainings2(){
+        String login = userInSessionService.getUserFromSessionByLogin();
+        List<Training> trainingList = trainingRepository.findAllByUserId(login);
+        return trainingList;
+    }
 
     @PostMapping("/app/addNewTraining")
     @ResponseBody

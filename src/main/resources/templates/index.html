@@ -61,18 +61,16 @@
         </div>
         <div class="sidebar-wrapper">
 
-            <ul class="nav">
-                <li class="nav-item active ">
+            <ul class="nav" id="mainNav">
 
-                </li>
-                <li class="nav-item active ">
+                <li class="nav-item active" id="trainingListButton" >
                     <a class="nav-link" href="#">
                         <i class="material-icons">directions_bike</i>
                         <p>Training List</p>
                     </a>
 
                 </li>
-                <li class="nav-item" id="classification">
+                <li class="nav-item" id="classificationButton" >
                     <a class="nav-link" href="#">
                         <i class="material-icons">compare_arrows</i>
                         <p>classification</p>
@@ -125,14 +123,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card" id="cardToDelate">
-                            <div id="addTrainingLLabel" class="card-header card-header-primary">
+                        <div class="card" id="headerCard">
+                            <div id="addTrainingLabel" class="card-header card-header-primary">
                                 <h4 class="card-title ">Training List</h4>
                                 <a id="addTrainingButton" class="nav-link" href="#" align="right" data-toggle="modal" style="float: right; width:176px"
                                    data-target="#addTrainingModal">
                                     <i class="material-icons">control_point</i>
                                 </a>
-                                <a id="deleteButton" class="nav-link" href="#" align="right" data-toggle="modal" style="float: right; position: absolute; right:176px">
+                                <a id="deleteButton" class="nav-link" href="#" align="right" data-toggle="modal" style="float: right; position: absolute; right:50px">
                                     <i class="material-icons">delete</i>
                                 </a>
 
@@ -182,7 +180,7 @@
                                                         Complete the field !!!
                                                     </div>
                                                     <input type="text" id="traningDate" class="addTreningStyle"
-                                                           th:field="*{trainingDate}"/>
+                                                           placeholder="Training date"  th:field="*{trainingDate}"/>
                                                     <div class="alert alert-danger collapse" role="alert"
                                                          id="kcalAlert">
                                                         Complete the field !!!
@@ -326,6 +324,7 @@
 <script type="text/javascript" src="dashboard/js/transfered.js"></script>
 <script src="dashboard/js/togeojson.js"></script>
 <script type="text/javascript" src="dashboard/js/custom.js"></script>
+<script type="text/javascript" src="dashboard/js/generatedView.js"></script>
 <script type="text/javascript" src="dashboard/js/leftPanel.js"></script>
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
