@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.cyclingDiary.entity.Role;
 import pl.cyclingDiary.entity.User;
 import pl.cyclingDiary.repository.RoleRepository;
 import pl.cyclingDiary.repository.UserRepository;
@@ -56,6 +57,8 @@ public class RegisterController {
 
             user.setRetypePassword(encodedPassword);
             user.setPassword(encodedPassword);
+            user.setEnabled(1);
+            user.getRoles().add(roleRepository.findFirstByRoleName("ROLE_USER"));
             userRepository.save(user);
 
             return "redirect:/login?newUser=true";

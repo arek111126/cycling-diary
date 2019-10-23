@@ -21,6 +21,7 @@
 
 }
 
+
 #mapid {
     height: 680px;
     width: 1555px;
@@ -87,3 +88,31 @@
 body {
     overflow: hidden;
 }
+
+#traningDate1 , #traningDate2{
+    cursor: pointer;
+    hight: 20px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#agregationTabItem {
+    cursor: pointer;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+.inpField{
+    background-color:#212842;
+    color:#8B92AC;
+}
+
