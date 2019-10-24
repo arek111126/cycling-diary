@@ -1,6 +1,6 @@
 $(function () {
 
-    function renderBarChart(month) {
+    function renderBarChart(month, tab) {
         var dataPoints = [];
 
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -9,7 +9,7 @@ $(function () {
             theme: "light1",
             title: {
                 text: "Distance"
-            },axisX:{
+            }, axisX: {
                 labelFontSize: 20
             },
             axisY: {
@@ -18,50 +18,93 @@ $(function () {
             },
             data: [{
                 type: "column",
-                dataPoints:  dataPoints
+                dataPoints: dataPoints
             }]
         });
 
-        $.getJSON("/app/statistic", function addData(data) {
-            for (var i = 0; i < data.length; i++) {
-                dataPoints.push({
-                    label: month[i],
-                    y: parseFloat(data[i].distance)
-                });
-            }
-            chart.render();
+        for (var i = 0; i < tab.length; i++) {
+            dataPoints.push({
+                label: month[parseInt(tab[i].month)-1],
+                y: parseFloat(tab[i].distance)
+            });
+        }
+        chart.render();
+    }
 
+    function renderPieChart(month,tab) {
+        var dataPoints2 = [];
+
+
+
+        var chart = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            title: {
+                text: "Desktop Search Engine Market Share - 2016"
+            },
+            data: [{
+                type: "pie",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y} kcal",
+
+                dataPoints: dataPoints2
+            }]
         });
 
+        for (var i = 0; i < tab.length; i++) {
 
-        //$.getJSON("/app/statistic", addData);
+            dataPoints2.push({
+                label: month[parseInt(tab[i].month)-1],
+                y: parseFloat(tab[i].kcal)
+            });
+        }
+
+
+        chart.render();
     }
 
 
+    $("#statisticButton").on("click", function () {
+        removeStatisticTable(this);
+        var month = [" January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"];
 
-$("#statisticButton").on("click",function () {
-    removeStatisticTable(this);
-  var montch = [" January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "June",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"];
-    var chart1= $("<div id=\"chartContainer\" style=\"height: 500px; width: 760px;\"></div>");
-    var chart2= $("<div id=\"chartContainer\" style=\"height: 370px; width: 100%;\"></div>");
-    $(".card-body").append(chart1);
-    $(".card-body").append(chart2);
+        $.ajax({
+            url: "/app/statistic",
+            data: {},
+            type: "GET",
+            dataType: "json"
+        }).done(function (result) {
+            console.log(result);
+
+            var chart1 = $("<div id=\"chartContainer\" style=\"height: 500px; width: 760px;\"></div>");
+            var chart2 = $("<div id=\"chartContainer2\" style=\"height: 370px; width: 100%;\"></div>");
+            $(".card-body").append(chart1);
+            $(".card-body").append(chart2);
+            renderBarChart(month, result);
+            renderPieChart(month,result);
+        }).fail(function (xhr, status, err) {
+            console.log(xhr);
+            console.log(status);
+            console.log(err);
+        })
+
+
         //https://canvasjs.com/html5-javascript-pie-chart/
 
-    renderBarChart(montch);
-})
 
+    })
 
 
 })

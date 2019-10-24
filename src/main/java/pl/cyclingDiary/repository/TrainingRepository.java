@@ -35,7 +35,7 @@ public interface TrainingRepository extends JpaRepository<Training, Integer> {
             "sum(t.distance)," +
             "sum(t.kcal)," +
             "avg(t.averageNew)," +
-            "count(t.trainingDate)) FROM Training t WHERE t.user.id = :id GROUP BY substring(t.trainingDate,6,2)")
+            "count(t.trainingDate)) FROM Training t WHERE t.user.id = :id GROUP BY substring(t.trainingDate,6,2) ORDER BY substring(t.trainingDate,6,2) ASC")
     List<StatisticData> findStatisticData(@Param("id") int id);
 
 
