@@ -122,9 +122,9 @@ $(function () {
         }).done(function (result) {
             console.log(result);
 
-            var chart1 = $("<div id=\"chartContainer\"  style=\"height: 500px; width: 760px;\"></div>");
-            var chart2 = $("<div id=\"chartContainer2\"  style=\"height: 500px; width: 760px;\"></div>");
-            var chart3= $("</br><div id=\"chartContainer3\" style=\"height: 500px; width:  760px;\"></div>");
+            var chart1 = $("<div id=\"chartContainer\"  style=\"height: 500px; width: 785px;\"></div>");
+            var chart2 = $("<div id=\"chartContainer2\"  style=\"height: 500px; width: 785px;\"></div>");
+            var chart3= $("</br><div id=\"chartContainer3\" style=\"height: 500px; width:  785px;\"></div>");
             $(".card-body").append(chart1);
             $(".card-body").append(chart2);
             $(".card-body").append(chart3);
