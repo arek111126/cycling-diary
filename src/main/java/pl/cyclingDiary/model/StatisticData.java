@@ -14,5 +14,5 @@ public class StatisticData {
     private String distance;
     private double kcal;
     private double averageNew;
-    private long trainingDate;
+    private long numberOftrenings;
 }

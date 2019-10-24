@@ -21,6 +21,32 @@
 
 }
 
+#chartContainer{
+    float:left;
+    width:50%;
+    padding-left:10px;
+
+}
+#chartContainer2{
+    float:right;
+    width:50%;
+
+}
+
+#chartContainer3{
+    padding-left:10px;
+    clear: both;
+    float: left;
+    display: block;
+    position: relative;
+    padding-top: 20px;
+}
+ /* Temporary CSS delete attribute when change overlap from statistic ! */
+#mainContentDiv{
+    margin-top : 10px !important;
+    padding: 10px 10px !important;
+}
+
 
 #mapid {
     height: 680px;

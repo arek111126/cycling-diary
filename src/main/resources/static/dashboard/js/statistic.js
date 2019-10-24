@@ -39,14 +39,14 @@ $(function () {
         var chart = new CanvasJS.Chart("chartContainer2", {
             animationEnabled: true,
             title: {
-                text: "Desktop Search Engine Market Share - 2016"
+                text: "Kcal"
             },
             data: [{
                 type: "pie",
                 showInLegend: "true",
                 legendText: "{label}",
                 indexLabelFontSize: 16,
-                indexLabel: "{label} - {y} kcal",
+                indexLabel: " {y} kcal",
 
                 dataPoints: dataPoints2
             }]
@@ -63,6 +63,40 @@ $(function () {
 
         chart.render();
     }
+
+    function renderSplineAreaChart(month,tab){
+        var dataPoints = [];
+        var chart = new CanvasJS.Chart("chartContainer3", {
+            animationEnabled: true,
+            title:{
+                text: "Average speed"
+            },
+            axisY: {
+                title: "Revenue in USD",
+                valueFormatString:"#,##0.##",
+                suffix: "km/h",
+            },
+            data: [{
+                type: "splineArea",
+                color: "rgba(54,158,173,.7)",
+                markerSize: 5,
+                xValueFormatString: "YYYY",
+                yValueFormatString: "$#,##0.##",
+                dataPoints: dataPoints
+            }]
+        });
+
+        for (var i = 0; i < tab.length; i++) {
+
+            dataPoints.push({
+                label: month[parseInt(tab[i].month)-1],
+                y: parseFloat(tab[i].averageNew)
+            });
+        }
+        chart.render();
+
+    }
+
 
 
     $("#statisticButton").on("click", function () {
@@ -88,12 +122,15 @@ $(function () {
         }).done(function (result) {
             console.log(result);
 
-            var chart1 = $("<div id=\"chartContainer\" style=\"height: 500px; width: 760px;\"></div>");
-            var chart2 = $("<div id=\"chartContainer2\" style=\"height: 370px; width: 100%;\"></div>");
+            var chart1 = $("<div id=\"chartContainer\"  style=\"height: 500px; width: 760px;\"></div>");
+            var chart2 = $("<div id=\"chartContainer2\"  style=\"height: 500px; width: 760px;\"></div>");
+            var chart3= $("</br><div id=\"chartContainer3\" style=\"height: 500px; width:  760px;\"></div>");
             $(".card-body").append(chart1);
             $(".card-body").append(chart2);
+            $(".card-body").append(chart3);
             renderBarChart(month, result);
             renderPieChart(month,result);
+            renderSplineAreaChart(month,result);
         }).fail(function (xhr, status, err) {
             console.log(xhr);
             console.log(status);
