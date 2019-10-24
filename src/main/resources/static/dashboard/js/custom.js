@@ -1,4 +1,4 @@
-let $1 = $(function () {
+ $(function () {
 
     $('.card-body').on('focus',"#traningDate", function(){
         $('input[id="traningDate"]').daterangepicker({
@@ -34,14 +34,15 @@ let $1 = $(function () {
     });
 
 
-    $("#trainingTableBody").on('click', 'tr', function () {
+  $(document).on('click', '.trainingOnList', function (e) {
+      e.stopPropagation();
         console.log($(this).find(":last-child"));
 
 
         var trainingId = $(this).find(">:first-child").attr("specialId");
 
 
-        $("#addTrainingLLabel").remove();
+         $("#addTrainingLLabel").remove();
         $("#trainingDiv").remove();
         var map = "<div id=\"mapid\"></div>";
         //$(".card-body").prepend("<div class=\"map\" id=\"mapid\"></div>");
@@ -144,6 +145,10 @@ let $1 = $(function () {
         event.stopPropagation();
 
     });
+     $(document).on('click', ".selectForDelete",function (event) {
+         event.stopPropagation();
+
+     });
 
 
     $("#addTrainingButton").on('click', function () {
@@ -208,7 +213,6 @@ let $1 = $(function () {
             $("#averageNewAlert").hide();
         }
 
-        console.log(kcal);
 
 
         if (!((trainingName == null || trainingName == "") ||
@@ -286,10 +290,11 @@ let $1 = $(function () {
                     averageNew +
                     "                                            </td>\n" +
                     "<td class=\"selectForDelete\">\n" +
-                    "<label class=\"container\">\n" +
-                    "<input type=\"checkbox\">\n" +
-                    "<span class=\"checkmark\"></span>\n" +
-                    "</label>\n" +
+                    "                                               <label class=\"container\">\n" +
+                    "                                                    <input type=\"checkbox\" class=\"deleteInput\" isChecked=\"false\" trainingId=" + result  + "  \">\n" +
+                    "                                                    <span class=\"checkmark\" checked=\"\"></span>\n" +
+                    "                                                </label>\n" +
+                    "                                            </td>" +
                     "</td>" +
                     "</tr>");
                 $("#trainingTableBody").fadeIn(300, function () {
@@ -301,6 +306,17 @@ let $1 = $(function () {
                 $('.selectForDelete').on('click', function (event) {
                     event.stopPropagation();
                 })
+
+                $(".deleteInput").on('click',function () {
+                    console.log("test");
+                    if ($(this).attr('isChecked') == 'false') {
+                        $(this).attr('isChecked', 'true');
+                    } else {
+                        $(this).attr('isChecked', 'false');
+                    }
+
+                });
+
                 $("#trainingAddedSuccesfullAlert").show();
             }).fail(function (xhr, status, err) {
                 console.log(xhr);
@@ -354,15 +370,26 @@ let $1 = $(function () {
 
     });
 
-    $(".deleteInput").on('click',function () {
-    console.log("test");
-        if ($(this).attr('isChecked') == 'false') {
-            $(this).attr('isChecked', 'true');
-        } else {
-            $(this).attr('isChecked', 'false');
-        }
+     $(".deleteInput").on('click',function () {
+         console.log("test");
+         if ($(this).attr('isChecked') == 'false') {
+             $(this).attr('isChecked', 'true');
+         } else {
+             $(this).attr('isChecked', 'false');
+         }
 
-    });
+     });
+     $(document).ready(function(){
+         $(document).on('click','.deleteInput',function () {
+         console.log("test");
+         if ($(this).attr('isChecked') == 'false') {
+             $(this).attr('isChecked', 'true');
+         } else {
+             $(this).attr('isChecked', 'false');
+         }
+     })
+
+     });
 
 
 });

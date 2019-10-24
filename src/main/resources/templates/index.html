@@ -77,6 +77,13 @@
                     </a>
 
                 </li>
+                <li class="nav-item" id="statisticButton" >
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">bar_chart</i>
+                        <p>Statistic</p>
+                    </a>
+
+                </li>
                 <li class="nav-item ">
                     <a class="nav-link" th:href="@{/logout}">
                         <i class="material-icons">power_settings_new</i>
@@ -277,7 +284,7 @@
                                             <td th:text="${training.averageNew}">
                                             </td>
                                             <td class="selectForDelete">
-                                                <label class="container">
+                                                <label class="container" id="deleteContainer">
                                                     <input type="checkbox" class="deleteInput" isChecked="false" th:attr="trainingId=${training.id}">
                                                     <span class="checkmark" checked=""></span>
                                                 </label>
@@ -319,17 +326,17 @@
 <script src="dashboard/js/material-dashboard.js?v=2.1.0"></script>
 
 <-- other -->
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script type="text/javascript" src="dashboard/js/transfered.js"></script>
 <script src="dashboard/js/togeojson.js"></script>
 <script type="text/javascript" src="dashboard/js/custom.js"></script>
-<script type="text/javascript" src="dashboard/js/generatedView.js"></script>
 <script type="text/javascript" src="dashboard/js/leftPanel.js"></script>
+<script type="text/javascript" src="dashboard/js/statistic.js"></script>
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.4.0/gpx.min.js"></script>
 <script  language="JavaScript" type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"/>
 <script  language="JavaScript" type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"/>

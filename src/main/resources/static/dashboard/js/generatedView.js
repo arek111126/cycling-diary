@@ -203,10 +203,10 @@ function generateTrainingTable(trainings) {
     $(".card-body").append(newTable);
 
 
-    $.each(trainings,function (index,element){
+    $.each(trainings, function (index, element) {
         var newTr = $(" <tr class=\"trainingOnList\">\n" +
             "                                            <td specialId=\"" + element.id + "\">\n"
-            + (parseInt(element.id) + 1) +
+            + (parseInt(index) + 1) +
             "                                            </td>\n" +
             "                                            <td >\n" +
             element.name +
@@ -230,28 +230,38 @@ function generateTrainingTable(trainings) {
             element.averageNew +
             "                                            </td>\n" +
             "<td class=\"selectForDelete\">\n" +
-            "<label class=\"container\">\n" +
-            "<input type=\"checkbox\" >\n" +
-            "<span class=\"checkmark\"></span>\n" +
-            "</label>\n" +
+            "                                               <label class=\"container\">\n" +
+            "                                                    <input type=\"checkbox\" class=\"deleteInput\" isChecked=\"false\" trainingId=" + element.id  + "  \">\n" +
+            "                                                    <span class=\"checkmark\" checked=\"\"></span>\n" +
+            "                                                </label>\n" +
+            "                                            </td>" +
             "</td>" +
+
             "</tr>");
         $("#trainingTableBody").fadeIn(300, function () {
             $("#trainingTableBody").append(newTr);
         });
-        $(".deleteInput2").on('click',function () {
-            console.log("test");
-            if ($(this).attr('isChecked') == 'false') {
-                $(this).attr('isChecked', 'true');
-            } else {
-                $(this).attr('isChecked', 'false');
-            }
 
-        });
+
+
     });
 
 
+
 }
+
+$(document).ready(function(){
+    $(document).on('click','.deleteInput',function () {
+        console.log("test");
+        if ($(this).attr('isChecked') == 'false') {
+            $(this).attr('isChecked', 'true');
+        } else {
+            $(this).attr('isChecked', 'false');
+        }
+    })
+
+});
+
 
 
 
