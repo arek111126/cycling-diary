@@ -49,6 +49,7 @@ public class RegisterController {
     public String registerNewUser( @Valid User user,BindingResult result,Model model) {
 
 
+
         if (result.hasErrors() ) {
             return "registerAccount";
         } else {

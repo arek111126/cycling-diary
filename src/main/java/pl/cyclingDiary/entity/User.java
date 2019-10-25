@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.GetMapping;
 import pl.cyclingDiary.validate.ConfirmPassword;
+import pl.cyclingDiary.validate.CurrentPassword;
+import pl.cyclingDiary.validate.UserValidationGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.groups.Default;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import java.util.List;
 @Setter
 @ToString
 @ConfirmPassword
+@CurrentPassword(groups = UserValidationGroup.class)
 @Entity
 @Table(name = "user")
 public class User {
@@ -40,17 +43,21 @@ public class User {
     @Transient
     private String retypePassword;
 
+    @Transient
+    private String currentPasword;
+
+
     @NotBlank
     private String sureName;
 
-   
+
     private int enabled;
 
     @NotBlank
     @Email
     private String email;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     @JsonIgnore
     private List<Role> roles;
@@ -63,8 +70,6 @@ public class User {
     public User() {
         roles = new ArrayList<>();
     }
-
-
 
 
 }

@@ -21,14 +21,17 @@
 
 }
 
-#chartContainer{
+#chartContainer1{
+    margin: auto;
     float:left;
     width:50%;
     padding-left:10px;
 
 }
 #chartContainer2{
-    float:right;
+    margin-left: 10px;
+    padding-left:10px;
+    float:left;
     width:50%;
 
 }
@@ -41,12 +44,30 @@
     position: relative;
     padding-top: 12px;
 }
+#chartContainer4{
+    padding-top: 12px;
+    padding-left:10px;
+    margin-left: 10px;
+    float:left;
+    width:50%;
+}
  /* Temporary CSS delete attribute when change overlap from statistic ! */
 #mainContentDiv{
     margin-top : 10px !important;
     padding: 10px 10px !important;
 }
 
+.form-control:focus{
+    background: #212842 !important;
+    border: none !important;
+    color: white !important;
+}
+.dark-edition .form-control,
+.is-focused .dark-edition .form-control {
+    background: #212842;
+    border: none;
+    background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px) !important;
+}
 
 #mapid {
     height: 680px;
