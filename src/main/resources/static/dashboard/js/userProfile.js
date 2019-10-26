@@ -11,7 +11,10 @@ $(function () {
                 dataType: "json"
             }).done(function (result) {
 
-            var editForm = $("<div class=\"col-md-8\">\n" +
+            var editForm = $("<div class=\"alert alert-success\"  id=\"successUpdate\"  style=\"position: absolute; margin-left:38%; margin-top:50px; display:none\" role=\"alert\">\n" +
+                "  Data Updated!\n" +
+                "</div>" +
+                "<div class=\"col-md-8\">\n" +
                 "              <div class=\"card\">\n" +
                 "                <div class=\"card-header card-header-primary\">\n" +
                 "                  <h4 class=\"card-title\">Edit Profile</h4>\n" +
@@ -43,7 +46,7 @@ $(function () {
                 "                      <div class=\"col-md-6\" >\n" +
                 "                        <div class=\"form-group\">\n" +
                 "                          <label class=\"bmd-label-floating\">Current Pasword</label>\n" +
-                "                          <input type=\"password\" class=\"form-control\" value>\n" +
+                "                          <input type=\"password\" class=\"form-control pass\" name=\"currentPassword\" value>\n" +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
@@ -51,7 +54,7 @@ $(function () {
                 "                      <div class=\"col-md-6\" >\n" +
                 "                        <div class=\"form-group\">\n" +
                 "                          <label class=\"bmd-label-floating\">New Password</label>\n" +
-                "                          <input type=\"password\" class=\"form-control\" name='password' value>\n" +
+                "                          <input type=\"password\" class=\"form-control pass\" name='password' value>\n" +
                 "                        </div>\n" +
                 "                      </div>\n" +
 
@@ -60,19 +63,19 @@ $(function () {
                 "                      <div class=\"col-md-6\">\n" +
                 "                        <div class=\"form-group\">\n" +
                 "                          <label class=\"bmd-label-floating\" >Confirm Password</label>\n" +
-                "                          <input type=\"password\" class=\"form-control hidden \" name='retypePassword' value>\n" +
+                "                          <input type=\"password\" class=\"form-control hidden pass\" name='retypePassword' value>\n" +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
                 "                    <div class=\"row\">\n" +
                 "                      <div class=\"col-md-6\">\n" +
                 "                        <div class=\"form-group\">\n" +
-                "                                <button  id=\"changePasswordButton\" class=\"btn btn-primary pull-right\" padding=\"20px\">Change Password</button>\n" +
+                "                                <button  id=\"changePasswordButton\" class=\"btn btn-primary pull-right pass\" padding=\"20px\">Change Password</button>\n" +
                 "                        </div>\n" +
                 "                      </div>\n" +
                 "                    </div>\n" +
 
-                "                    <button id='updateUserDataButton' type=\"submit\" class=\"btn btn-primary pull-right\">Update Profile</button>\n" +
+                "                    <button id='updateUserDataButton' type=\"submit\" class=\"btn btn-primary pull-right \">Update Profile</button>\n" +
                 "                    <div class=\"clearfix\"></div>\n" +
                 "                  </form>\n" +
                 "                </div>\n" +
@@ -88,6 +91,14 @@ $(function () {
         })
     });
 
+
+
+
+
+
+
+
+
     $(document).on('click',"#changePasswordButton",function (e) {
         e.preventDefault();
         $(".passwordClass").fadeToggle();
@@ -102,8 +113,9 @@ console.log(formData);
             url: '/app/changeUserData',
             data: formData
         }).done(function (response) {
-            console.log("udalo sie !!")
-
+            console.log(response)
+            $(".pass").val("");
+            $("#successUpdate").toggle();
         }).fail(function (xhr, status, err) {
             console.log(xhr);
             console.log(status);

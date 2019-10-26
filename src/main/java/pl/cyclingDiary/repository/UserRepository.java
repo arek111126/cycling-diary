@@ -6,4 +6,6 @@ import pl.cyclingDiary.entity.User;
 public interface UserRepository extends JpaRepository<User,Integer> {
 
        User findFirstByLogin(String login);
+              User findFirstById(int id);
+              User deleteById(int id);
 }

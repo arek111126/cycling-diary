@@ -13,7 +13,8 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
     <meta charset="utf-8"/>
@@ -90,6 +91,14 @@
                         <p>User Profile</p>
                     </a>
                 </li>
+
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')"  id="adminPanel">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">vpn_key</i>
+                        <p>Admin Panel</p>
+                    </a>
+                </li>
+
                 <li class="nav-item ">
                     <a class="nav-link" th:href="@{/logout}">
                         <i class="material-icons">power_settings_new</i>
@@ -341,6 +350,7 @@
 <script type="text/javascript" src="dashboard/js/leftPanel.js"></script>
 <script type="text/javascript" src="dashboard/js/statistic.js"></script>
 <script type="text/javascript" src="dashboard/js/userProfile.js"></script>
+<script type="text/javascript" src="dashboard/js/adminPanel.js"></script>
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
         integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
         crossorigin=""></script>

@@ -1,11 +1,14 @@
 function removeStatisticTable(currentElem) {
 
     var navItem = $("#mainNav").children();
-
+        $(".alert").hide();
     if (navItem.eq(0).hasClass("active")) {
+        $("#addTrainingLabelTrainings").fadeOut(250, function () {
+            $("#addTrainingLabelTrainings").remove();
+        })
         $("#addTrainingLabel").fadeOut(250, function () {
             $("#addTrainingLabel").remove();
-        })
+        });
         $(".card-body").empty();
         navItem.removeClass("active");
         $(currentElem).addClass("active")
@@ -44,6 +47,16 @@ function removeStatisticTable(currentElem) {
 
     } else if (navItem.eq(3).hasClass("active")){
 
+        navItem.removeClass("active");
+        $(currentElem).addClass("active");
+        $(".card-body ").empty();
+    }else if (navItem.eq(4).hasClass("active")){
+        $("#addTrainingLabelAdmin").fadeOut(250, function () {
+            $("#addTrainingLabelAdmin").remove();
+        })
+
+        $(".trainingOnList").remove();
+        $(".card-body").empty();
         navItem.removeClass("active");
         $(currentElem).addClass("active");
     }
@@ -252,7 +265,7 @@ function generateTrainingListView(trainings) {
 
 function generateTrainingList() {
 
-    var tainingListLabel = $(" <div id=\"addTrainingLabel\" class=\"card-header card-header-primary\">\n" +
+    var tainingListLabel = $(" <div id=\"addTrainingLabelTrainings\" class=\"card-header card-header-primary\">\n" +
         "                                <h4 class=\"card-title \">Training List</h4>\n" +
         "                                <a id=\"addTrainingButton\" class=\"nav-link\" href=\"#\" align=\"right\" data-toggle=\"modal\" style=\"float: right; width:176px\"\n" +
         "                                   data-target=\"#addTrainingModal\">\n" +
