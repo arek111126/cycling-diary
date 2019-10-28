@@ -165,24 +165,7 @@ $(document).on("click", "#btnFilter", function () {
         addStatisticTable(result);
 
 
-        $('input[id="traningDate1"]').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1901,
-            startDate: moment().format('YYYY-MM-DD'),
-            locale: {
-                format: 'YYYY-MM-DD'
-            }
-        });
-        $('input[id="traningDate2"]').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1901,
-            startDate: moment().format('YYYY-MM-DD'),
-            locale: {
-                format: 'YYYY-MM-DD'
-            }
-        });
+
     }).fail(function (xhr, status, err) {
         console.log(xhr);
         console.log(status)
